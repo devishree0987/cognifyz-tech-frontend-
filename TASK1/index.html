@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cognifyz Interactive Website</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(180deg, #eef6ff 0%, #f7fbff 100%);
+            color: #1f334d;
+            line-height: 1.6;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at top left, rgba(32, 123, 255, 0.18), transparent 30%),
+                        radial-gradient(circle at bottom right, rgba(24, 95, 165, 0.18), transparent 28%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        .page { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+        .brand { color: #0b2d5a; font-size: 24px; font-weight: 700; }
+        .menu { display: flex; gap: 24px; }
+        .menu a { color: #0b2d5a; text-decoration: none; font-size: 14px; font-weight: 600; transition: color .2s ease; }
+        .menu a:hover { color: #185fa5; }
+        .hero {
+            background: #185fa5;
+            color: white;
+            border-radius: 26px;
+            padding: 48px 42px;
+            margin-bottom: 32px;
+            box-shadow: 0 24px 56px rgba(24, 95, 165, 0.16);
+        }
+        .hero span {
+            display: inline-block;
+            margin-bottom: 18px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+        }
+        .hero h1 { font-size: clamp(2.5rem, 4vw, 4rem); max-width: 780px; margin-bottom: 20px; }
+        .hero p { font-size: 1rem; max-width: 700px; color: #dce8ff; }
+        .hero .hero-buttons { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 16px; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-radius: 999px;
+            padding: 14px 24px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+        }
+        .btn-primary { background: #f6f9ff; color: #185fa5; }
+        .btn-secondary { background: rgba(255,255,255,0.16); color: #ffffff; border: 1px solid rgba(255,255,255,0.32); }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 14px 28px rgba(0,0,0,0.12); }
+        .content { display: grid; grid-template-columns: 1.25fr .85fr; gap: 26px; margin-bottom: 32px; }
+        .panel {
+            background: white;
+            border-radius: 22px;
+            border: 1px solid rgba(17, 51, 85, 0.08);
+            box-shadow: 0 18px 40px rgba(17, 51, 85, 0.06);
+            padding: 32px;
+        }
+        .section-title {
+            color: #185fa5;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .img-card { overflow: hidden; border-radius: 18px; margin-bottom: 28px; }
+        .img-card img { width: 100%; display: block; }
+        .img-caption h2 { font-size: 1.35rem; margin-bottom: 10px; }
+        .img-caption p { color: #5e6778; }
+        .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+        .card { padding: 22px; background: #f7fbff; border-radius: 18px; border: 1px solid rgba(24,95,165,0.08); }
+        .card h3 { margin-bottom: 12px; font-size: 1rem; }
+        .card p { color: #5b6775; font-size: 0.95rem; }
+        .interactive {
+            display: grid;
+            gap: 18px;
+            margin-top: 14px;
+        }
+        .quote-box {
+            background: #f0f6ff;
+            border-radius: 18px;
+            border: 1px solid rgba(24,95,165,0.12);
+            padding: 22px;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .quote-text { font-size: 1.05rem; color: #1f334d; margin-bottom: 16px; }
+        .quote-author { color: #185fa5; font-weight: 700; }
+        .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+        .stat-card { background: #fff; border-radius: 16px; padding: 18px; border: 1px solid rgba(24,95,165,0.08); }
+        .stat-card strong { display: block; font-size: 1.35rem; color: #185fa5; margin-bottom: 10px; }
+        .stat-card span { color: #5b6775; font-size: 0.95rem; }
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            color: #5b6775;
+            font-size: 0.95rem;
+        }
+        .badge { background: #e8f2ff; color: #185fa5; padding: 10px 18px; border-radius: 999px; font-weight: 700; }
+        @media (max-width: 920px) {
+            .content { grid-template-columns: 1fr; }
+            .cards { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            nav { flex-direction: column; align-items: flex-start; gap: 16px; }
+            .hero { padding: 32px 24px; }
+            .hero .hero-buttons { flex-direction: column; align-items: stretch; }
+            .btn { width: 100%; }
+            .page { padding: 0 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <nav>
+            <span class="brand">Cognifyz</span>
+            <div class="menu">
+                <a href="#features">Features</a>
+                <a href="#interactive">Interactive</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <span>Interactive Website Development</span>
+            <h1>Build a responsive website with eye-catching visuals and live content.</h1>
+            <p>Modern front-end development using HTML, CSS, and JavaScript. This page includes an attractive layout, responsive design, and an API-powered interactive quote experience.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" id="quoteBtn">Show a live quote</button>
+                <button class="btn btn-secondary" id="learnBtn">Explore the page</button>
+            </div>
+        </section>
+
+        <div class="content">
+            <div class="panel">
+                <p class="section-title">Featured Project</p>
+                <div class="img-card">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80" alt="Web development dashboard">
+                </div>
+                <div class="img-caption">
+                    <h2>Interactive Front-End Showcase</h2>
+                    <p>This project shows how HTML structure, CSS styling, and JavaScript can work together to create a responsive and engaging website.</p>
+                </div>
+                <div class="cards">
+                    <div class="card">
+                        <h3>Semantic HTML</h3>
+                        <p>Uses accessible structure and meaningful text for better SEO and maintainability.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Responsive Layout</h3>
+                        <p>Works well on desktop, tablet, and mobile screens using flexible CSS rules.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Interactive API</h3>
+                        <p>Fetches live quotes from a remote service, showing a real-world front-end integration.</p>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="panel" id="interactive">
+                <p class="section-title">Live Interaction</p>
+                <div class="interactive">
+                    <div class="quote-box" id="quoteBox">
+                        <p class="quote-text" id="quoteText">Click &ldquo;Show a live quote&rdquo; to see a new quote from the API.</p>
+                        <p class="quote-author" id="quoteAuthor">— Your next inspiration</p>
+                    </div>
+                    <button class="btn btn-primary" id="refreshBtn">Refresh quote</button>
+                </div>
+                <div class="stats">
+                    <div class="stat-card">
+                        <strong>3+</strong>
+                        <span>Design sections</span>
+                    </div>
+                    <div class="stat-card">
+                        <strong>1</strong>
+                        <span>Responsive page</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <footer id="contact">
+            <p>© 2026 Cognifyz Tech · Built with HTML, CSS, and JavaScript</p>
+            <span class="badge">Responsive & Interactive</span>
+        </footer>
+    </div>
+
+    <script>
+        const quoteBtn = document.getElementById('quoteBtn');
+        const refreshBtn = document.getElementById('refreshBtn');
+        const quoteText = document.getElementById('quoteText');
+        const quoteAuthor = document.getElementById('quoteAuthor');
+        const learnBtn = document.getElementById('learnBtn');
+
+        const fallbackQuotes = [
+            { text: 'Design is not just what it looks like; design is how it works.', author: 'Steve Jobs' },
+            { text: 'The best way to predict the future is to create it.', author: 'Peter Drucker' },
+            { text: 'Good design is obvious. Great design is transparent.', author: 'Joe Sparano' }
+        ];
+
+        function showQuote(quote) {
+            quoteText.textContent = quote.text;
+            quoteAuthor.textContent = `— ${quote.author}`;
+        }
+
+        async function fetchQuote() {
+            try {
+                const response = await fetch('https://api.quotable.io/random');
+                if (!response.ok) throw new Error('Network response was not ok');
+                const data = await response.json();
+                showQuote({ text: data.content, author: data.author });
+            } catch (error) {
+                const fallback = fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)];
+                showQuote(fallback);
+            }
+        }
+
+        quoteBtn.addEventListener('click', fetchQuote);
+        refreshBtn.addEventListener('click', fetchQuote);
+        learnBtn.addEventListener('click', () => document.getElementById('interactive').scrollIntoView({ behavior: 'smooth' }));
+    </script>
+</body>
+</html>
