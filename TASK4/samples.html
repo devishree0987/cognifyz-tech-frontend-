@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Gradient Design</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+
+            /* Dark neon gradient */
+            background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #00f5ff, #ff00ff);
+            background-size: 400% 400%;
+
+            animation: neonFlow 10s ease infinite;
+        }
+
+        @keyframes neonFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-top: 40vh;
+
+            /* Neon glow effect */
+            text-shadow: 
+                0 0 5px #00f5ff,
+                0 0 10px #00f5ff,
+                0 0 20px #ff00ff,
+                0 0 40px #ff00ff;
+        }
+
+        button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+
+            background: black;
+            color: #00f5ff;
+
+            box-shadow: 0 0 10px #00f5ff, 0 0 20px #00f5ff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Electric Night 🌌</h1>
+
+    <button onclick="toggleAnimation()">Pause / Play</button>
+
+    <script>
+        function toggleAnimation() {
+            if (document.body.style.animationPlayState === "paused") {
+                document.body.style.animationPlayState = "running";
+            } else {
+                document.body.style.animationPlayState = "paused";
+            }
+        }
+    </script>
+
+</body>
+</html>
