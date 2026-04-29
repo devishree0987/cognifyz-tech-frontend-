@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>API Integration Demo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>&#127760; Dynamic Data Dashboard</h1>
+    <p>Powered by <strong>JSONPlaceholder API</strong></p>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="users">&#128100; Users</button>
+    <button class="tab-btn" data-tab="posts">&#128196; Posts</button>
+  </nav>
+
+  <main>
+    <div id="status-bar">
+      <span id="status-text">Ready to fetch data...</span>
+    </div>
+
+    <div class="controls">
+      <button id="fetch-btn">&#9654; Fetch Data</button>
+      <button id="clear-btn">&#10005; Clear</button>
+    </div>
+
+    <div id="loading" class="hidden">
+      <div class="spinner"></div>
+      <p>Fetching from API...</p>
+    </div>
+
+    <div id="output-grid"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
