@@ -1,0 +1,136 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  transition: 0.3s;
+}
+
+/* Light mode */
+body.light {
+  background: linear-gradient(135deg, #a1869d, #99e6e9);
+  color: white;
+}
+
+/* Dark mode */
+body.dark {
+  background: #121212;
+  color: #eee;
+}
+
+/* Top toggle */
+.top-bar {
+  text-align: right;
+  padding: 10px;
+}
+
+#toggleMode {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* Center container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+/* Form box */
+.form-box {
+  background: rgba(255,255,255,0.1);
+  padding: 25px;
+  border-radius: 15px;
+  width: 300px;
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.7s ease;
+}
+
+/* Toggle buttons */
+.toggle-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.toggle-buttons button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  background: #ccc;
+}
+
+.toggle-buttons .active {
+  background: #2d829c ;
+  color: #041c41,#2d829c;
+}
+
+/* Forms */
+.form {
+  display: none;
+}
+
+.form.active {
+  display: block;
+}
+
+/* Inputs */
+.input-group {
+  position: relative;
+  margin: 15px 0;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-bottom: 2px solid white;
+  background: transparent;
+  color: inherit;
+  outline: none;
+}
+
+.input-group label {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  transition: 0.3s;
+}
+
+/* Floating label */
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+  top: -10px;
+  font-size: 12px;
+  color: #00ffcc;
+}
+
+/* Button */
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(45deg, #2d829c, #041c41);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+  transform: scale(1.05);
+}
+
+/* Messages */
+.msg {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}

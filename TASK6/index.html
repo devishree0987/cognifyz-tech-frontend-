@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Auth Form</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="top-bar">
+  <button id="toggleMode">🌙 Dark Mode</button>
+</div>
+
+<div class="container">
+  <div class="form-box">
+
+    <div class="toggle-buttons">
+      <button id="loginBtn" class="active">Login</button>
+      <button id="signupBtn">Signup</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="form active">
+      <h2>Login</h2>
+
+      <div class="input-group">
+        <input type="text" id="loginEmail" required>
+        <label>Email</label>
+      </div>
+
+      <div class="input-group">
+        <input type="password" id="loginPassword" required>
+        <label>Password</label>
+      </div>
+
+      <button type="submit">Login</button>
+      <p class="msg" id="loginMsg"></p>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="signupForm" class="form">
+      <h2>Signup</h2>
+
+      <div class="input-group">
+        <input type="text" id="name" required>
+        <label>Name</label>
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="email" required>
+        <label>Email</label>
+      </div>
+
+      <div class="input-group">
+        <input type="password" id="password" required>
+        <label>Password</label>
+      </div>
+
+      <button type="submit">Register</button>
+      <p class="msg" id="signupMsg"></p>
+    </form>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
